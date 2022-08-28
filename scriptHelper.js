@@ -37,15 +37,21 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(input) {
-    // let userInput = String(testInput)
-    if (input === '' ){
-        return 'Enter a valid input'
-    } else if(isNaN(input) ){
-    
-    return "Not a number"
-    } else{
-        return "is a number"
+    if (input === ""){
+        return "Empty";
+    }  else if(isNaN(input)){
+        return "Not a Number"
+    } else if(isNaN(input) === false){
+        return "Is a number"
     }
+    // if (Number(input) === "" ){
+    //     return "Empty"
+    // } else if(isNaN(Number(input))){
+    
+    // return "Not a Number"
+    // } else{
+    //     return "Is a number"
+    // }
     
 
     //     let form = document.querySelector("#formField")
@@ -68,33 +74,32 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let Fuelready = true;
     // const form = document.querySelector("#formField")
 
-    let validatedPilot = validateInput(pilot);
-    let validatedCoPilot = validateInput(copilot);
-    let validatedfuelLevel = validateInput(fuelLevel);
-    let validatedcargoLevel = validateInput(cargoLevel);
+    // let validatedPilot = validateInput(pilot);
+    // let validatedCoPilot = validateInput(copilot);
+    // let validatedfuelLevel = validateInput(fuelLevel);
+    // let validatedcargoLevel = validateInput(cargoLevel);
 
 
 
-    let pilotMessage = pilot + " Ready!"
-    let copilotMessage = copilot + "Ready";
-    if (validatedPilot === "Empty"|| validatedCoPilot  === "Empty" || validatedfuelLevel === "Empty" ||validatedcargoLevel === "Empty"){
-        window.alert("All Field are required")
-    } else if( validatedPilot !== "Not a Number" || validatedCoPilot !== "Not a Number" || validatedfuelLevel === "Not a Number" || validatedcargoLevel === "Not a Number" ){
-        window.alert("Invalid Input")
-    } else {
-        if(fuelLevel < 10000 && cargoLevel > 10000){
+    // let pilotMessage = pilot + " Ready!"
+    // let copilotMessage = copilot + "Ready";
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
+        window.alert("All Field are required");
+    } else if( validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number" ){
+        window.alert("Invalid Input");
+    } else if(Number(fuelLevel) < 10000 && Number(cargoLevel) > 10000){
             list.style.visibility = 'visible';
             fuelStatus.innerHTML = 'Not enough fuel for launch';
             cargoStatus.innerHTML = 'Cargo is heavy for launch';
             launchStatus.innerHTML = 'Shuttle is not ready for launch';
             launchStatus.style.color = 'red';
-        } else if(fuelLevel < 10000 && cargoLevel <= 10000){
+        } else if(Number(fuelLevel) < 10000 && Number(cargoLevel) <= 10000){
             list.style.visibility = 'visible';
             fuelStatus.innerHTML = 'Not enough fuel for launch';
             cargoStatus.innerHTML = 'Cargo is low for launch';
             launchStatus.innerHTML = 'Shuttle is not ready for launch';
             launchStatus.style.color = 'red';
-        }else if(fuelLevel >= 10000 && cargoLevel > 10000){
+        }else if(Number(fuelLevel) >= 10000 && Number(cargoLevel) > 10000){
             list.style.visibility = 'visible';
              fuelStatus.innerHTML = 'Fuel level is high enough for Launch';
             cargoStatus.innerHTML = 'Cargo is heavy for launch';
@@ -108,7 +113,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             launchStatus.style.color = 'green';
 
         } 
-     }
+     
 };
 
 
