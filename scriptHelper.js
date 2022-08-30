@@ -93,23 +93,31 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             cargoStatus.innerHTML = 'Cargo is heavy for launch';
             launchStatus.innerHTML = 'Shuttle is not ready for launch';
             launchStatus.style.color = 'red';
+            pilotStatus.innerHTML = `pilot ${pilot} is ready`;
+            copilotStatus.innerHTML = `copilot ${copilot} is ready`
         } else if(Number(fuelLevel) < 10000 && Number(cargoLevel) <= 10000){
             list.style.visibility = 'visible';
             fuelStatus.innerHTML = 'Not enough fuel for launch';
             cargoStatus.innerHTML = 'Cargo is low for launch';
             launchStatus.innerHTML = 'Shuttle is not ready for launch';
             launchStatus.style.color = 'red';
+            pilotStatus.innerHTML = `pilot ${pilot} is ready`;
+            copilotStatus.innerHTML = `copilot ${copilot} is ready`
         }else if(Number(fuelLevel) >= 10000 && Number(cargoLevel) > 10000){
             list.style.visibility = 'visible';
              fuelStatus.innerHTML = 'Fuel level is high enough for Launch';
             cargoStatus.innerHTML = 'Cargo is heavy for launch';
              launchStatus.innerHTML = 'Shuttle is not ready for launch';
             launchStatus.style.color = 'red';
+            pilotStatus.innerHTML = `pilot ${pilot} is ready`;
+            copilotStatus.innerHTML = `copilot ${copilot} is ready`
         }else{
             list.style.visibility = 'visible';
             fuelStatus.innerHTML = 'Fuel level is high enough for Launch';
             cargoStatus.innerHTML = 'Cargo is low enough for launch';
             launchStatus.innerHTML = 'Shuttle is ready for launch';
+            pilotStatus.innerHTML = `pilot ${pilot} is ready`;
+            copilotStatus.innerHTML = `copilot ${copilot} is ready`
             launchStatus.style.color = 'green';
 
         } 
